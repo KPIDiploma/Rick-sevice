@@ -13,10 +13,20 @@
 
     <mvc:annotation-driven />
 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
     <context:component-scan base-package="com.volontyr" />
 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>validation</value>
+            </list>
+        </property>
+    </bean>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/WEB-INF/vm" p:suffix=".vm" p:order="0">
+          p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:order="0">
     </bean>
 
 </beans>
