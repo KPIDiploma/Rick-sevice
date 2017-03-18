@@ -47,13 +47,13 @@ public class DoctorController {
 
         securityService.autoLogin(doctor.getUsername(), doctor.getPasswordConfirm());
 
-        return "rediret:/welcome";
+        return "redirect:/welcome";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(String error, String logout, Model model) {
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("error", "Your username or password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
@@ -63,6 +63,7 @@ public class DoctorController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
+        model.addAttribute("username", securityService.findLoggedInUsername());
         return "welcome";
     }
 }

@@ -1,0 +1,29 @@
+<form method="POST" modelAttribute="doctorForm" class="form-signin">
+    <div class="logoBlock2 disTab">
+        <div class="logo"></div>
+    </div>
+
+    <div class="form-group formAbs disTab">
+        <h2 class="form-heading titleFormAbs">Create your account</h2>
+
+        #springBind("doctorForm")
+        <div class="form-group loginBlock disTab">
+            #springFormInput("doctorForm.username", "placeholder=Username class=form-control autofocus=true")
+##            #foreach($error in $status.errorMessages) <b>$error</b> <br> #end
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormPasswordInput("doctorForm.password", "placeholder=Password class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormPasswordInput("doctorForm.passwordConfirm", "placeholder='Confirm your password' class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button class="btn btn-lg btn-primary btn-block go1" type="submit">Submit</button>
+    </div>
+</form>

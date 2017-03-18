@@ -12,6 +12,7 @@
         <intercept-url pattern="/welcome" access="hasRole('ROLE_USER')"/>
         <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password"/>
         <logout logout-success-url="/login?logout" />
+        <csrf />
     </http>
 
     <authentication-manager alias="authenticationManager">
@@ -22,8 +23,7 @@
 
     <beans:bean id="userDetailsServiceImpl" class="com.volontyr.service.UserDetailsServiceImpl" />
 
-    <beans:bean id="encoder"
-                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>
 </beans:beans>

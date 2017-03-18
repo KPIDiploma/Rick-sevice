@@ -1,0 +1,7 @@
+#if ($username != "")
+    <form id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+
+    <h2>Welcome $username | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+#end
