@@ -1,0 +1,57 @@
+<div class="sidebar box-sizing">
+    <div class="titleBlockSB disTab">
+        <p>Menu</p>
+##        <div class="close"></div>
+    </div>
+    <div class="listMenu disTab">
+        <ul>
+            <li>
+                Patients
+                <div></div>
+                <span><div>1</div></span>
+            </li>
+            <li>
+                Sick patients
+                <div></div>
+                <span><div>0</div></span>
+            </li>
+            <li>
+                Doctors
+                <div></div>
+                <span><div>17</div></span>
+            </li>
+            <li>
+            ## CHANGE IT
+                Notes
+            </li>
+            <li>
+                <a href="/patients/add">
+                    Add patient
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="lineWho disTab">
+    ## CHANGE IT
+        You entered as:
+        Current user role
+    </div>
+    <div class="whoBlock box-sizing disTab">
+        <div class="insetWhoBlock disTab">
+            <div class="profileMini disTab">
+                <div class="imgProfile" style="background: url()
+                                           no-repeat center;
+                                           background-size: cover;"></div>
+                <p class="nameProfile">
+                ## CHANGE IT
+                    current user
+                </p>
+                <p class="desProfile">
+                ## CHANGE IT
+                    Position: current user position
+                </p>
+            </div>
+            <a onclick="document.forms['logoutForm'].submit()">Logout</a>
+        </div>
+    </div>
+</div>

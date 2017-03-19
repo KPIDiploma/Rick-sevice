@@ -1,3 +1,5 @@
+#set( $layout = "WEB-INF/layouts/auth.vm" )
+
 <form method="POST" action="/login" class="form-signin">
     <div class="logoBlock2 disTab">
         <div class="logo"></div>
@@ -25,4 +27,4 @@
             <p class="text-center"><a href="/registration">Create an account</a></p>
         </div>
     </div>
-</form
+</form>

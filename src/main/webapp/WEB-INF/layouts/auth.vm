@@ -1,0 +1,11 @@
+#parse("/WEB-INF/fragments/header.vm")
+
+<body>
+    <div class="container">
+        $screen_content
+    </div>
+
+    #include("/WEB-INF/fragments/footer.vm")
+
+</body>
+</html>

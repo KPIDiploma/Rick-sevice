@@ -63,7 +63,6 @@ public class DoctorController {
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
     public String welcome(Model model) {
-        model.addAttribute("username", securityService.findLoggedInUsername());
         return "welcome";
     }
 }

@@ -15,6 +15,7 @@ public class Doctor {
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
+    private Set<Permission> permissions;
 
     @Id
     @GeneratedValue
@@ -60,5 +61,25 @@ public class Doctor {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "doctor_permission", joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<Permission> permissions) {
+        this.permissions = permissions;
+    }
+
+    public boolean hasPermission(String target, String permissionName) {
+        for (Permission permission : permissions) {
+            if (permission.getTarget().equals(target) && permission.getPermission().equals(permissionName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
