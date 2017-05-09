@@ -1,0 +1,5 @@
+Congratulations, ${name}!
+
+You were successfully registered at our doctor service. Please confirm your registration using following link.
+
+$!{content}

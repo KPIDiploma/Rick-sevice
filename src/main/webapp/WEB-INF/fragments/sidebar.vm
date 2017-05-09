@@ -1,0 +1,68 @@
+#* @vtlvariable name="doctor" type="com.volontyr.model.Doctor" *#
+
+###set ($ctx = $request.getSession().getAttribute("SPRING_SECURITY_CONTEXT"))
+###set ($username = $ctx.getAuthentication().getPrincipal().getUsername())
+#set ($majorRole = "Doctor")
+#foreach ($role in $doctor.roles)
+    #if ($role.name == "ROLE_ADMIN")
+        #set ($majorRole = "Administrator")
+    #end
+#end
+
+<div class="sidebar box-sizing">
+    <div class="titleBlockSB disTab">
+        <p>Menu</p>
+##        <div class="close"></div>
+    </div>
+    <div class="listMenu disTab">
+        <ul>
+            <li>
+                Patients
+                <div></div>
+                <span><div>1</div></span>
+            </li>
+            #if ($majorRole == "Administrator")
+                <li>
+                    Doctors
+                    <div></div>
+                    <span><div>17</div></span>
+                </li>
+            #end
+            <li>
+                <a href="/patients/add">
+                    Add patient
+                </a>
+            </li>
+            #if ($majorRole == "Administrator")
+                <li>
+                    <a href="/registration">
+                        Add doctor
+                    </a>
+                </li>
+            #end
+        </ul>
+    </div>
+    <div class="lineWho disTab">
+    ## CHANGE IT
+        You entered as:
+        $!{majorRole}
+    </div>
+    <div class="whoBlock box-sizing disTab">
+        <div class="insetWhoBlock disTab">
+            <div class="profileMini disTab">
+                <div class="imgProfile" style="background: url()
+                                           no-repeat center;
+                                           background-size: cover;"></div>
+                <p class="nameProfile">
+                ## CHANGE IT
+                    $!{doctor.fullName}
+                </p>
+                <p class="desProfile">
+                ## CHANGE IT
+                    Position: $!{doctor.position}
+                </p>
+            </div>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+</div>

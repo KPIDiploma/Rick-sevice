@@ -1,0 +1,31 @@
+#set( $layout = "WEB-INF/layouts/auth.vm" )
+
+<form method="POST" action="/login" class="form-signin">
+    <div class="logoBlock2 disTab">
+        <div class="logo"></div>
+    </div>
+
+    <div class="form-group #if($error)has-error#{else}#{end} formAbs disTab">
+        <h2 class="form-heading titleFormAbs">Log in</h2>
+        <div class="loginBlock disTab">
+            <span>$!{message}</span>
+        </div>
+        <div class="loginBlock disTab">
+            <input name="username" type="text" class="form-control" placeholder="Email"
+                   autofocus="true"/>
+        </div>
+        <div class="loginBlock disTab">
+            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            <div class="loginBlock disTab">
+                <span>$!{error}</span>
+            </div>
+        </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <button class="btn btn-lg btn-primary btn-block go1" type="submit">Log In</button>
+
+        <div class="loginBlock disTab">
+            <p class="text-center"><a href="/forgotPassword">Reset password</a></p>
+        </div>
+    </div>
+</form>

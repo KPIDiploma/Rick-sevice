@@ -1,0 +1,15 @@
+#* @vtlvariable name="doctor" type="com.volontyr.model.Doctor" *#
+
+###set ($ctx = $request.getSession().getAttribute("SPRING_SECURITY_CONTEXT"))
+###set ($username = $ctx.getAuthentication().getPrincipal().getUsername())
+
+#if ($!{doctor})
+    <form id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+
+    <h2>Welcome $doctor.fullName | <a href="/logout">Logout</a></h2>
+#end
+
+
+

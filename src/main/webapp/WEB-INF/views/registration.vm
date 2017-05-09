@@ -1,0 +1,68 @@
+###set( $layout = "WEB-INF/layouts/auth.vm" )
+
+<form method="POST" modelAttribute="doctorForm" class="form-signin">
+    <div class="logoBlock2 disTab">
+        <div class="logo"></div>
+    </div>
+
+    <div class="form-group formAbs disTab">
+        <h2 class="form-heading titleFormAbs">Create an account</h2>
+
+        #springBind("doctorForm")
+        <div class="form-group loginBlock disTab">
+            #springFormSingleSelect("doctorForm.gender", $genderValues, "class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormInput("doctorForm.fullName", "placeholder='Full name' class=form-control autofocus=true")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormInput("doctorForm.email", "placeholder=Email class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormInput("doctorForm.phone", "placeholder='Phone number' class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab input-append date">
+            #springFormInput("doctorForm.birthDate", "placeholder='Birthday (mm/dd/yyyy)' class='form-control datepicker'")
+##            <span class="add-on"><i class="icon-th"></i></span>
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormMultiSelect("doctorForm.roles", $roleValues, "class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormInput("doctorForm.position", "placeholder='Position' class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormPasswordInput("doctorForm.password", "placeholder=Password class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <div class="form-group loginBlock disTab">
+            #springFormPasswordInput("doctorForm.passwordConfirm", "placeholder='Confirm your password' class=form-control")
+            #springShowErrors("<br/>", "color:red")
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button class="btn btn-lg btn-primary btn-block go1" type="submit">Submit</button>
+    </div>
+</form>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".datepicker").datepicker({
+            dateFormat:"yyyy/mm/dd"
+        });
+    });
+</script>

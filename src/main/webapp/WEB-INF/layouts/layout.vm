@@ -1,0 +1,18 @@
+#parse("/WEB-INF/fragments/header.vm")
+
+<body>
+    <section>
+
+        #parse("/WEB-INF/fragments/sidebar.vm")
+
+        <div class="wrapperContent box-sizing disTab">
+            <div class="contentBlock box-sizing disTab">
+                $screen_content
+            </div>
+        </div>
+    </section>
+
+    #include("/WEB-INF/fragments/footer.vm")
+
+</body>
+</html>
