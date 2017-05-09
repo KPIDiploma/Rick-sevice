@@ -1068,13 +1068,13 @@ select {
 }
 
 .formAbs {
-  width: 400px;
-  height: 400px;
-  position: absolute;
-  left: 50%;
-  margin-left: -200px;
-  top: 55%;
-  margin-top: -200px;
+  width: 600px;
+  /*height: 400px;*/
+  /*position: absolute;*/
+  /*left: 50%;*/
+  margin: 0 auto;
+  /*top: 55%;*/
+  /*margin-top: -200px;*/
   border-radius: 5px;
   background-color: #F7F4F4;
   border: 1px solid #D3D3D3;
@@ -1112,7 +1112,7 @@ select {
 	width: 100%;
 }
 
-.loginBlock input {
+.loginBlock input, .loginBlock select {
     width: 90%;
     height: 40px;
     border: 2px solid #DEDEDE;

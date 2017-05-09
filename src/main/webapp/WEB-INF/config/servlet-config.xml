@@ -11,7 +11,7 @@
                            http://www.springframework.org/schema/security
                            http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven conversion-service="conversionService" />
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
@@ -50,5 +50,15 @@
         <property name="contentType" value="text/html; charset=utf-8" />
         <property name="exposeSessionAttributes" value="true" />
         <property name="exposeRequestAttributes" value="true" />
+    </bean>
+
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.volontyr.converter.StringToRole" />
+                <bean class="com.volontyr.converter.StringToGender" />
+            </set>
+        </property>
     </bean>
 </beans>

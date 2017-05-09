@@ -28,7 +28,7 @@ public class DoctorPermissionEvaluator implements PermissionEvaluator {
     public boolean hasPermission(Authentication authentication, Object targetObject, Object permission) {
 //        JdbcTemplate template = new JdbcTemplate(dataSource);
 
-        Doctor doctor = doctorRepository.findByUsername(((User) authentication.getPrincipal()).getUsername());
+        Doctor doctor = doctorRepository.findByEmail(((User) authentication.getPrincipal()).getUsername());
 
         return doctor.hasPermission(targetObject.getClass().getName(), permission.toString());
     }

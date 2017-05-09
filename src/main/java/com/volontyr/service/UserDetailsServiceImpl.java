@@ -24,8 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private DoctorRepository doctorRepository;
 
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Doctor doctor = doctorRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Doctor doctor = doctorRepository.findByEmail(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
@@ -33,6 +33,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
-        return new User(doctor.getUsername(), doctor.getPassword(), grantedAuthorities);
+        if (doctor.isEnabled()) {
+            return new User(doctor.getEmail(), doctor.getPassword(), grantedAuthorities);
+        }
+
+        return null;
     }
 }

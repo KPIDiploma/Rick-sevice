@@ -1,3 +1,14 @@
+#* @vtlvariable name="doctor" type="com.volontyr.model.Doctor" *#
+
+###set ($ctx = $request.getSession().getAttribute("SPRING_SECURITY_CONTEXT"))
+###set ($username = $ctx.getAuthentication().getPrincipal().getUsername())
+#set ($majorRole = "Doctor")
+#foreach ($role in $doctor.roles)
+    #if ($role.name == "ROLE_ADMIN")
+        #set ($majorRole = "Administrator")
+    #end
+#end
+
 <div class="sidebar box-sizing">
     <div class="titleBlockSB disTab">
         <p>Menu</p>
@@ -10,31 +21,31 @@
                 <div></div>
                 <span><div>1</div></span>
             </li>
-            <li>
-                Sick patients
-                <div></div>
-                <span><div>0</div></span>
-            </li>
-            <li>
-                Doctors
-                <div></div>
-                <span><div>17</div></span>
-            </li>
-            <li>
-            ## CHANGE IT
-                Notes
-            </li>
+            #if ($majorRole == "Administrator")
+                <li>
+                    Doctors
+                    <div></div>
+                    <span><div>17</div></span>
+                </li>
+            #end
             <li>
                 <a href="/patients/add">
                     Add patient
                 </a>
             </li>
+            #if ($majorRole == "Administrator")
+                <li>
+                    <a href="/registration">
+                        Add doctor
+                    </a>
+                </li>
+            #end
         </ul>
     </div>
     <div class="lineWho disTab">
     ## CHANGE IT
         You entered as:
-        Current user role
+        $!{majorRole}
     </div>
     <div class="whoBlock box-sizing disTab">
         <div class="insetWhoBlock disTab">
@@ -44,14 +55,14 @@
                                            background-size: cover;"></div>
                 <p class="nameProfile">
                 ## CHANGE IT
-                    current user
+                    $!{doctor.fullName}
                 </p>
                 <p class="desProfile">
                 ## CHANGE IT
-                    Position: current user position
+                    Position: $!{doctor.position}
                 </p>
             </div>
-            <a onclick="document.forms['logoutForm'].submit()">Logout</a>
+            <a href="/logout">Logout</a>
         </div>
     </div>
 </div>
