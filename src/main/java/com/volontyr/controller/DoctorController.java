@@ -1,5 +1,6 @@
 package com.volontyr.controller;
 
+import com.volontyr.api.PatientAPI;
 import com.volontyr.event.OnRegistrationCompleteEvent;
 import com.volontyr.mail.Mail;
 import com.volontyr.mail.Mailer;
@@ -10,6 +11,7 @@ import com.volontyr.service.GenderService;
 import com.volontyr.service.RoleService;
 import com.volontyr.service.SecurityService;
 import com.volontyr.validator.DoctorValidator;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -241,22 +243,5 @@ public class DoctorController {
 
     private String getURLWithContextPath(HttpServletRequest request) {
         return request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public @ResponseBody String test() throws IOException {
-        CloseableHttpClient client = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost("http://52.29.160.135/api/v1/register/?token=3274");
-
-        String json = "{\"email\":\"avolontyr@alteryx.com\",\"birthday\":\"1995-02-02\",\"fullname\":\"John Smith ||\"}";
-        StringEntity entity = new StringEntity(json);
-        httpPost.setEntity(entity);
-        httpPost.setHeader("Accept", "application/json");
-        httpPost.setHeader("Content-type", "application/json");
-
-        CloseableHttpResponse response = client.execute(httpPost);
-        client.close();
-
-        return response.toString();
     }
 }

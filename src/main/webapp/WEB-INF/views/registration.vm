@@ -10,12 +10,12 @@
 
         #springBind("doctorForm")
         <div class="form-group loginBlock disTab">
-            #springFormSingleSelect("doctorForm.gender", $genderValues, "class=form-control")
+            #springFormSingleSelect("doctorForm.sex", $genderValues, "class=form-control")
             #springShowErrors("<br/>", "color:red")
         </div>
 
         <div class="form-group loginBlock disTab">
-            #springFormInput("doctorForm.fullName", "placeholder='Full name' class=form-control autofocus=true")
+            #springFormInput("doctorForm.fullname", "placeholder='Full name' class=form-control autofocus=true")
             #springShowErrors("<br/>", "color:red")
         </div>
 
@@ -25,12 +25,12 @@
         </div>
 
         <div class="form-group loginBlock disTab">
-            #springFormInput("doctorForm.phone", "placeholder='Phone number' class=form-control")
+            #springFormInput("doctorForm.mobile", "placeholder='Phone number' class=form-control")
             #springShowErrors("<br/>", "color:red")
         </div>
 
         <div class="form-group loginBlock disTab input-append date">
-            #springFormInput("doctorForm.birthDate", "placeholder='Birthday (mm/dd/yyyy)' class='form-control datepicker'")
+            #springFormInput("doctorForm.birthday", "placeholder='Birthday (mm/dd/yyyy)' class='form-control datepicker'")
 ##            <span class="add-on"><i class="icon-th"></i></span>
             #springShowErrors("<br/>", "color:red")
         </div>

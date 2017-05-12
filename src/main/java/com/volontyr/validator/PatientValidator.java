@@ -29,14 +29,14 @@ public class PatientValidator extends DoctorValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Patient patient = (Patient) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fullName", "NotEmpty");
-        if (patient.getFullName().length() < 6 || patient.getFullName().length() > 50) {
-            errors.rejectValue("fullName", "Size.userForm.username");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fullname", "NotEmpty");
+        if (patient.getFullname().length() < 6 || patient.getFullname().length() > 50) {
+            errors.rejectValue("fullname", "Size.userForm.username");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty");
-        if (!Arrays.asList(Gender.values()).contains(patient.getGender())) {
-            errors.rejectValue("gender", "NotValid.userForm.gender");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sex", "NotEmpty");
+        if (!Arrays.asList(Gender.values()).contains(patient.getSex())) {
+            errors.rejectValue("sex", "NotValid.userForm.gender");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
@@ -48,23 +48,14 @@ public class PatientValidator extends DoctorValidator implements Validator {
             errors.rejectValue("email", "Duplicate.userForm.email");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "NotEmpty");
-        if (!validateField(PHONE_PATTERN, patient.getPhone())) {
-            errors.rejectValue("phone", "NotValid.userForm.phone");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mobile", "NotEmpty");
+        if (!validateField(PHONE_PATTERN, patient.getMobile())) {
+            errors.rejectValue("mobile", "NotValid.userForm.phone");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "NotEmpty");
         if (patient.getAddress().length() < 8) {
             errors.rejectValue("address", "Size.userForm.address");
-        }
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (patient.getPassword().length() < 8) {
-            errors.rejectValue("password", "Size.userForm.password");
-        }
-
-        if (!patient.getPassword().equals(patient.getPasswordConfirm())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
     }
 }

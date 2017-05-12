@@ -1,7 +1,6 @@
 package com.volontyr.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,17 +18,13 @@ public class Patient {
     @Id
     @GeneratedValue
     private Long id;
-    private String fullName;
-    private Gender gender;
+    private String fullname;
+    private Gender sex;
     private String email;
-    private String phone;
+    private String mobile;
     private String address;
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private Date birthDate;
-    @DateTimeFormat(pattern = "yyyy/mm/dd")
-    private Date registrationDate;
-    private String password;
-    private String passwordConfirm;
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private Date birthday;
 
     public Long getId() {
         return id;
@@ -39,25 +34,22 @@ public class Patient {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Gender getSex() {
+        return sex;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setSex(Gender sex) {
+        this.sex = sex;
     }
 
-    public void setGender(String gender) {
-        this.gender = Gender.valueOf(gender);
-    }
 
     public String getEmail() {
         return email;
@@ -67,12 +59,12 @@ public class Patient {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getAddress() {
@@ -83,36 +75,11 @@ public class Patient {
         this.address = address;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Transactional
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

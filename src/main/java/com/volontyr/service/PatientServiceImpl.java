@@ -20,26 +20,18 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Override
     public void save(Patient patient) {
-        patient.setPassword(bCryptPasswordEncoder.encode(patient.getPassword()));
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date birthDate = Calendar.getInstance().getTime();
-        Date registrationDate = Calendar.getInstance().getTime();
 
         try {
-            birthDate = dateFormat.parse(dateFormat.format(patient.getBirthDate()));
-            registrationDate = dateFormat.parse(dateFormat.format(Calendar.getInstance().getTime()));
+            birthDate = dateFormat.parse(dateFormat.format(patient.getBirthday()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        patient.setBirthDate(birthDate);
-        patient.setRegistrationDate(registrationDate);
+        patient.setBirthday(birthDate);
 
         patientRepository.save(patient);
     }
